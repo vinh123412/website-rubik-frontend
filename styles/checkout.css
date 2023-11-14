@@ -1,0 +1,25 @@
+body{
+  margin: 0;
+}
+.checkout-header{
+  height: 70px;
+  display: flex;
+  background-color: black;
+  align-items: center;
+}
+.thanh-toan{
+  color: white;
+  margin-left: 200px;
+}
+.logo{
+  height: 70px;
+  width: 105px;
+}
+.space-logo{
+  width: 375px;
+  display: flex;
+  justify-content: center;
+}
+.right-section{
+  flex: 1;
+}

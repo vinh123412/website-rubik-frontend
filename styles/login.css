@@ -1,0 +1,37 @@
+body{
+  background-color: rgb(240, 240, 240);
+}
+.container{
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+.login-container{
+  background-color: rgb(255, 255, 255);
+  width: 350px;
+  height: 270px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 5px;
+}
+.email,
+.matkhau{
+  width: 292px;
+  border-radius: 5px;
+  height: 30px;
+  border-color: rgb(236, 236, 236);
+}
+.login-button{
+  width: 300px;
+  height: 35px;
+  border-radius: 5px;
+  margin-top: 15px;
+  color: white;
+  background-color: rgb(255, 102, 0);
+}
+.login-button:hover{
+  opacity: 0.9;
+  cursor: pointer;
+}
