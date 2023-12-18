@@ -1,7 +1,6 @@
 import {cart, addToCart} from './cart.js';
 
-
-const products1 = [{
+export const products1 = [{
   image: 'picture/img_201405191004073256.webp',
   name: 'Rubik1',
   price: 10000
@@ -23,7 +22,7 @@ const products1 = [{
   price: 50000
 }];
 
-const products2 = [{
+export const products2 = [{
   image: 'picture/img_201405191004073256.webp',
   name: 'Rubik6',
   price: 60000
@@ -45,7 +44,7 @@ const products2 = [{
   price: 100000
 }];
 
-const products3 = [{
+export const products3 = [{
   image: 'picture/img_201405191004073256.webp',
   name: 'Rubik11',
   price: 110000
@@ -66,6 +65,7 @@ const products3 = [{
   name: 'Rubik15',
   price: 150000
 }];
+export const products = products1+products2+products3;
 
 let products1HTML = '';
 let products2HTML = '';
@@ -77,7 +77,7 @@ products1.forEach((product) => {
       <img class="rubik-picture" src="${product.image}">
       <p class="product-name">${product.name}</p>
       <p class="price">${(product.price/1000).toFixed(3)}đ</p>
-      <button class="purchase-button js-add-to-cart" data-product-name="${product.name}">Thêm Vào Giỏ Hàng</button>
+      <button class="purchase-button js-add-to-cart" data-product-name="${product.name}" data-product-image="${product.image}" data-product-price="${product.price}">Thêm Vào Giỏ Hàng</button>
     </div>
   `;
 });
@@ -88,7 +88,7 @@ products2.forEach((product) => {
       <img class="rubik-picture" src="${product.image}">
       <p class="product-name">${product.name}</p>
       <p class="price">${(product.price/1000).toFixed(3)}đ</p>
-      <button class="purchase-button js-add-to-cart" data-product-name="${product.name}">Thêm Vào Giỏ Hàng</button>
+      <button class="purchase-button js-add-to-cart" data-product-name="${product.name}" data-product-image="${product.image}" data-product-price="${product.price}">Thêm Vào Giỏ Hàng</button>
     </div>
   `;
 });
@@ -99,7 +99,7 @@ products3.forEach((product) => {
       <img class="rubik-picture" src="${product.image}">
       <p class="product-name">${product.name}</p>
       <p class="price">${(product.price/1000).toFixed(3)}đ</p>
-      <button class="purchase-button js-add-to-cart" data-product-name="${product.name}">Thêm Vào Giỏ Hàng</button>
+      <button class="purchase-button js-add-to-cart" data-product-name="${product.name}" data-product-image="${product.image}" data-product-price="${product.price}">Thêm Vào Giỏ Hàng</button>
     </div>
   `;
 });
@@ -112,19 +112,25 @@ document.querySelector('.js-product3').innerHTML = products3HTML;
 
 function updateCartQuantity(){
   let cartQuantity=0;
-    cart.forEach((cartItem) => {
-      cartQuantity+=cartItem.quantity;
-    });
-
-    document.querySelector('.js-notifycation').innerHTML=cartQuantity;
+  cart.forEach((cartItem) => {
+    cartQuantity+=cartItem.quantity;
+  });
+  
+  document.querySelector('.js-notifycation').innerHTML=cartQuantity;
 }
+
+
 
 document.querySelectorAll('.js-add-to-cart').forEach((button) => {
   button.addEventListener('click', () => {
     const productName = button.dataset.productName;
+    const productImage = button.dataset.productImage;
+    const productPrice = button.dataset.productPrice;
     
-    addToCart(productName);
+    addToCart(productName, productImage, productPrice);
     updateCartQuantity();
-    
+
   });
 });
+
+updateCartQuantity();
